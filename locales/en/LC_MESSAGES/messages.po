@@ -1,0 +1,30 @@
+# Nautilus "New Folder from Template" Extension
+# Copyright (C) 2014
+# Mark Edgington <edgimar@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-08-17 17:35+EDT\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: nautilus-new-folder-from-template.py:41
+msgid "Templates"
+msgstr "Templates"
+
+#: nautilus-new-folder-from-template.py:43
+msgid "FolderTemplates"
+msgstr "FolderTemplates"
+
+#: nautilus-new-folder-from-template.py:142
+#: nautilus-new-folder-from-template.py:171
+msgid "New Folder from Template"
+msgstr "New Folder from Template"
+
