@@ -48,7 +48,7 @@ Author/License
 
 - License: GPLv3
 - Original Author: Mark Edgington ([bitbucket site](https://bitbucket.org/edgimar/nautilus-new-folder-from-template))
-- Latest Author: Joseph Pitts ([github site](https://bitbucket.org/edgimar/nautilus-new-folder-from-template))
+- Latest Author: Joseph Pitts ([github site](https://github.com/Pittsy24/nautilus-new-folder-from-template))
 
 Contributing
 ------------
