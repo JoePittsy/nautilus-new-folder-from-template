@@ -1,10 +1,14 @@
+import gi
+import sys
+gi.require_version('Nautilus', '3.0')
+gi.require_version('GObject', '2.0')
+from gi.repository import Nautilus, GObject
 import subprocess
 import shutil
 import urllib
 import time
 import re
 import os
-from gi.repository import Nautilus, GObject
 
 
 def substitute_name(file_name):
@@ -12,7 +16,7 @@ def substitute_name(file_name):
     :param file_name: The file name
     :return: the file_name with %date[] replaced
     """
-    regex = ur"\%date\[.*?\]"   
+    regex = r"\%date\[.*?\]"   
     
     try:
         matches = re.finditer(regex, file_name, re.MULTILINE)
@@ -33,7 +37,6 @@ def create_unique_folder(path):
     :param path: Creates a folder at this path if not present
     :return: None
     """
-    print(path)
     if not os.path.isdir(path):
         subprocess.check_output(['mkdir', '-p', path])
 
@@ -69,6 +72,7 @@ def copy_into_folder(source, destination):
         diff = set(cwd.split(source))
         dest = destination.join(diff) if len(diff) != 1 else destination
         for folder in folders:
+            folder = substitute_name(folder)
             create_unique_folder(dest + "/" + folder)
         for file in files:
             shutil.copy2(cwd + "/" + file, dest + "/" + substitute_name(file))
@@ -76,17 +80,20 @@ def copy_into_folder(source, destination):
 
 class NewFolderFromTemplate(GObject.GObject, Nautilus.MenuProvider):
     def __init__(self):
+        GObject.Object.__init__(self)
         # Get the template folders directory
         with open(os.path.abspath(os.path.expanduser("~/.config/user-dirs.dirs"))) as config_file:
             data = config_file.read()
             template_line = data[data.find("XDG_TEMPLATES_DIR"):data.find("XDG_PUBLICSHARE_DIR=")]
             self.template_folders_directory = template_line[template_line.find('"') + 1:-2] + "/../FolderTemplates"
+            if "$HOME" in self.template_folders_directory: 
+                self.template_folders_directory = self.template_folders_directory.replace("$HOME", os.environ("HOME"))
 
         # If the folder doesn't exist then create it
         create_unique_folder(self.template_folders_directory)
 
     def button_clicked(self, state, folder, current_directory):
-        path = create_folder(current_directory + "/" + folder)
+        path = create_folder(current_directory + "/" + substitute_name(folder))
         print(folder + " Created")
         copy_into_folder(self.template_folders_directory + "/" + folder, path)
 

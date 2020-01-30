@@ -23,7 +23,15 @@ install_missing
 echo -ne "\nInstalling extension..."
 TARGET=~/.local/share/nautilus-python/extensions
 mkdir -p $TARGET
-cp nautilus-new-folder-from-template.py $TARGET
+cp src/nautilus-new-folder-from-template.py $TARGET
 
 echo "DONE."
-echo -e "\nYou will need to restart Nautilus for the extension to take effect.\n"
+read -n1 -p "Restart Nautilus automaticly? [y,N]: " choice 
+if [[ $inpchoiceut == "Y" || $choice == "y" ]]; then
+        pkill nautilus
+        nautilus 2>&1 & disown nautilus
+else
+        echo -e "\nYou will need to restart Nautilus for the extension to take effect.\n"
+fi
+
+echo -e "\nExtension installed!\n"

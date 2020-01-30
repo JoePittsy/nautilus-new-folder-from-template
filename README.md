@@ -23,7 +23,7 @@ slashes in their names.
 
 Demo
 ============
-![Demo Gif](demo.gif)
+![Demo Gif](images/demo.gif)
 
 Installation
 ============
@@ -36,6 +36,7 @@ Or, if you prefer simply copy the `nautilus-new-folder-from-template.py` file to
 
 Uninstallation
 ============
+To unstall, run the `uninstall.sh` script included in this repository.
 
-Simply delete the `nautilus-new-folder-from-template.py` file from the `~/.local/share/nautilus-python/extensions` directory.
+Or delete the `nautilus-new-folder-from-template.py` file from the `~/.local/share/nautilus-python/extensions` directory.
 
