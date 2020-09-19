@@ -87,10 +87,11 @@ class NewFolderFromTemplate(GObject.GObject, Nautilus.MenuProvider):
             template_line = data[data.find("XDG_TEMPLATES_DIR"):data.find("XDG_PUBLICSHARE_DIR=")]
             self.template_folders_directory = template_line[template_line.find('"') + 1:-2] + "/../FolderTemplates"
             if "$HOME" in self.template_folders_directory: 
-                self.template_folders_directory = self.template_folders_directory.replace("$HOME", os.environ("HOME"))
+                self.template_folders_directory = self.template_folders_directory.replace("$HOME", os.environ["HOME"])
 
         # If the folder doesn't exist then create it
         create_unique_folder(self.template_folders_directory)
+        create_unique_folder(self.template_folders_directory + "/New Folder")
 
     def button_clicked(self, state, folder, current_directory):
         path = create_folder(current_directory + "/" + substitute_name(folder))

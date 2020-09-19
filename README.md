@@ -1,7 +1,7 @@
 Description
 ===========
 
-This Nautilis extension allows you to create template folders.
+This Nautilus extension allows you to create template folders.
 A "New Folder from Template" item will be added to the context menu when 
 you right-click on the background of a folder. Selecting a folder from this
 list will create a new folder in that folder and copy all of the template
@@ -32,11 +32,16 @@ To install, simply run the `install.sh` script included in this repository.
 
 This script checks that required dependencies are installed, and copies the `nautilus-new-folder-from-template.py` file to the `~/.local/share/nautilus-python/extensions` directory, as well as copying over language translation files to the same directory.
 
-Or, if you prefer simply copy the `nautilus-new-folder-from-template.py` file to the `~/.local/share/nautilus-python/extensions` directory manualy. 
+Or, if you prefer simply copy the `nautilus-new-folder-from-template.py` file to the `~/.local/share/nautilus-python/extensions` directory manually. 
+
+Usage
+============
+
+To create a new template create the folder and file structure in your /home/Username/FolderTemplates folder, if you have moved your templates folder then this folder will be moved to the same location.
 
 Uninstallation
 ============
-To unstall, run the `uninstall.sh` script included in this repository.
+To uninstall, run the `uninstall.sh` script included in this repository.
 
 Or delete the `nautilus-new-folder-from-template.py` file from the `~/.local/share/nautilus-python/extensions` directory.
 
